@@ -1,0 +1,120 @@
+html {
+            min-height: 100vh; /* Ensure html element takes full viewport height */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a; /* Dark background */
+            color: #e0e0e0; /* Light text color */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Align content to the top */
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box; /* Include padding in element's total width and height */
+            position: relative; /* Needed for absolutely positioned canvas */
+        }
+
+        #three-js-canvas {
+            position: fixed; /* Fixed to viewport */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Send it to the background */
+            display: block; /* Ensure it takes up space */
+        }
+
+        .container-wrapper {
+            max-width: 90%; /* Responsive width */
+            width: 1000px; /* Max width for larger screens */
+            background-color: rgba(26, 26, 26, 0.85); /* Semi-transparent dark background for readability */
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Stronger shadow for depth */
+            padding: 0; /* Remove padding from wrapper, moved to inner divs */
+            position: relative; /* Ensure it stays above the canvas */
+            z-index: 1; /* Above the canvas */
+            margin-bottom: 4rem; /* Add space at the bottom for scrolling */
+        }
+
+        /* Custom scrollbar for song lists */
+        .custom-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #2d2d2d;
+            border-radius: 10px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #4a4a4a;
+            border-radius: 10px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #5e5e5e;
+        }
+
+        /* Custom Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: #2a2a2a;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .modal-content h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-buttons button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .modal-buttons .confirm-btn {
+            background-color: #3b82f6; /* Blue-600 */
+            color: white;
+            margin-right: 0.5rem;
+        }
+
+        .modal-buttons .confirm-btn:hover {
+            background-color: #2563eb; /* Blue-700 */
+        }
+
+        .modal-buttons .cancel-btn {
+            background-color: #ef4444; /* Red-500 */
+            color: white;
+        }
+
+        .modal-buttons .cancel-btn:hover {
+            background-color: #dc2626; /* Red-600 */
+        }

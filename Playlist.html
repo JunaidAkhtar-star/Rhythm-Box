@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Playlist</title>
+    <link rel="stylesheet" href="playlist.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter for clean typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base styles */
+
+    </style>
+</head>
+<body>
+    <!-- Three.js Canvas for Background Animation -->
+    <canvas id="three-js-canvas"></canvas>
+
+    <div class="container-wrapper">
+        <!-- Main Playlist Creation and Listing View -->
+        <div id="main-playlist-view" class="bg-gray-900 rounded-lg shadow-xl p-8">
+            <h1 class="text-3xl font-bold text-white mb-6 text-center">Create Your New Playlist</h1>
+
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
+                <div class="mb-4">
+                    <label for="playlist-name" class="block text-gray-300 text-sm font-bold mb-2">Playlist Name</label>
+                    <input type="text" id="playlist-name" class="shadow appearance-none border rounded w-full py-2 px-3 bg-gray-700 text-white leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 rounded-md" placeholder="Enter playlist name">
+                </div>
+                <div class="mb-6">
+                    <label for="playlist-description" class="block text-gray-300 text-sm font-bold mb-2">Description</label>
+                    <textarea id="playlist-description" class="shadow appearance-none border rounded w-full py-2 px-3 bg-gray-700 text-white leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 h-24 resize-none rounded-md" placeholder="Describe your playlist (optional)"></textarea>
+                </div>
+                <div class="flex items-center justify-center">
+                    <button id="create-playlist-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg focus:outline-none focus:shadow-outline transition-colors duration-200">
+                        Create Playlist
+                    </button>
+                </div>
+                <div id="playlist-message" class="mt-4 text-green-400 text-center hidden"></div>
+            </div>
+
+            <h2 class="text-2xl font-bold text-white mb-4 text-center">Your Existing Playlists</h2>
+            <div id="user-playlists-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+                <!-- User created playlists will be rendered here -->
+                <p class="text-gray-400 col-span-full text-center" id="no-playlists-message">No playlists created yet. Start by creating one!</p>
+            </div>
+        </div>
+
+        <!-- Playlist Detail View (initially hidden) -->
+        <div id="playlist-detail-view" class="bg-gray-900 rounded-lg shadow-xl p-8 hidden">
+            <button id="back-to-playlists-btn" class="text-gray-400 hover:text-white mb-4 flex items-center">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Playlists
+            </button>
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-6 mb-6 pb-4 border-b border-gray-700">
+                <img id="detail-playlist-cover" src="https://placehold.co/150x150/663399/FFFFFF?text=Playlist" alt="Playlist Cover" class="w-36 h-36 rounded-md object-cover flex-shrink-0">
+                <div class="text-center md:text-left flex-grow">
+                    <p class="text-sm text-gray-400">PLAYLIST</p>
+                    <h1 id="detail-playlist-name" class="text-4xl md:text-5xl font-extrabold text-white mt-1 mb-2">Playlist Name</h1>
+                    <p id="detail-playlist-description" class="text-gray-300 text-base">Playlist description goes here.</p>
+                    <button id="delete-playlist-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg mt-4 transition-colors duration-200">
+                        <i class="fas fa-trash-alt mr-2"></i>Delete Playlist
+                    </button>
+                </div>
+            </div>
+
+            <!-- Songs in this Playlist -->
+            <h3 class="text-xl font-bold text-white mb-4">Songs in this Playlist (<span id="songs-in-playlist-count">0</span>)</h3>
+            <div id="songs-in-current-playlist" class="space-y-3 mb-8 max-h-96 overflow-y-auto custom-scroll p-2 rounded-md bg-gray-800">
+                <!-- Songs will be loaded here -->
+                <p class="text-gray-400 text-center" id="no-songs-in-playlist-message">No songs added to this playlist yet.</p>
+            </div>
+
+            <!-- Add Songs Section -->
+            <h3 class="text-xl font-bold text-white mb-4">Add Songs</h3>
+            <div class="relative mb-4">
+                <input type="text" id="song-search-input" class="bg-gray-700 text-white pl-4 pr-10 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 w-full" placeholder="Search for songs to add...">
+                <i class="fas fa-search absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            </div>
+            <div id="available-songs-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-h-96 overflow-y-auto custom-scroll p-2 rounded-md bg-gray-800">
+                <!-- Available songs will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Modal for Alerts and Confirmations -->
+    <div id="custom-modal-overlay" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3 id="modal-title"></h3>
+            <p id="modal-message"></p>
+            <div class="modal-buttons">
+                <button id="modal-confirm-btn" class="confirm-btn hidden">OK</button>
+                <button id="modal-cancel-btn" class="cancel-btn hidden">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script type="module" src="playlist.js"></script>
+</body>
+</html>
+
+
+
+

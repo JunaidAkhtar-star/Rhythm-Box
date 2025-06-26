@@ -1,0 +1,220 @@
+body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a; /* Dark background */
+            color: #e0e0e0; /* Light text color */
+            overflow-x: hidden; /* Prevent horizontal scroll for layout */
+        }
+
+        /* Main layout: sidebar + content */
+        .main-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar styling */
+        .sidebar {
+            width: 250px; /* Fixed width for sidebar on desktop */
+            background-color: #212121; /* Slightly darker than body */
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #333;
+            position: fixed; /* Fixed sidebar */
+            height: 100vh; /* Full height */
+            top: 0;
+            left: 0;
+            z-index: 20; /* Above main content */
+            transform: translateX(0); /* Default active on desktop */
+            transition: transform 0.3s ease-in-out; /* For mobile slide-in */
+        }
+
+        /* Mobile sidebar hidden by default, slides in when 'active' */
+        @media (max-width: 767px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.active {
+                transform: translateX(0);
+            }
+        }
+
+        /* Main content area */
+        .content-area {
+            flex-grow: 1;
+            margin-left: 250px; /* Offset for fixed sidebar on desktop */
+            padding-bottom: 80px; /* Space for fixed mini-player */
+            background-color: #1a1a1a; /* Match body background */
+            padding-top: 3.5rem; /* Adjusted for header height */
+        }
+
+        /* Adjust content area on mobile */
+        @media (max-width: 767px) {
+            .content-area {
+                margin-left: 0; /* No offset on mobile */
+                padding-top: 3.5rem; /* Adjusted for header height + hamburger */
+            }
+        }
+
+        /* Hero section background image with overlay */
+        .hero-section {
+            background-image: url('https://placehold.co/1200x600/4F46E5/FFFFFF?text=Rhythm+Box+Music'); /* Placeholder image updated for Rhythm Box */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 4rem 2rem;
+            color: white;
+            border-radius: 0.75rem; /* Rounded corners */
+            overflow: hidden;
+            margin: 1rem 0; /* Add some vertical margin */
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* Existing gradient background */
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+            /* Background image for hero-overlay is now inline */
+            background-image: url(''); /* New background image */
+            background-size: cover; /* Cover the entire area */
+            background-position: center; /* Center the image */
+            background-blend-mode: overlay; /* Blends the image with the gradient */
+            z-index: 1;
+            display: flex; /* For visualizer bars alignment */
+            justify-content: center; /* Center the visualizer bars horizontally */
+            align-items: flex-end; /* Align bars to the bottom */
+            overflow: hidden; /* Hide bars exceeding overlay bounds */
+        }
+
+        /* Music Visualizer Styles (now specifically for sidebar) */
+        .visualizer-container {
+            /* Positioned absolutely within the sidebar */
+            position: absolute;
+            bottom: 1.5rem; /* Padded from the bottom to match sidebar padding */
+            left: 1.5rem; /* Padded from the left to match sidebar padding */
+            right: 1.5rem; /* Padded from the right to match sidebar padding */
+            height: 80px; /* Reduced height for small size */
+            display: flex;
+            justify-content: space-around; /* Distribute bars evenly */
+            align-items: flex-end; /* Align bars to the bottom */
+            overflow: hidden;
+            border-radius: 0.5rem; /* Rounded corners for the container */
+            /* Removed background-color and box-shadow */
+            padding: 0.5rem;
+            z-index: 10; /* Ensure it's above other sidebar elements if needed */
+        }
+
+        /* Visualizer bar styles */
+        .visualizer-bar {
+            width: 3px; /* Further reduced width for smaller bars */
+            background-color: rgba(66, 153, 225, 0.7); /* Base color, will be overridden by JS */
+            margin: 0 1px; /* Smaller margin between bars */
+            min-height: 2px; /* Even smaller minimum height */
+            transform-origin: bottom;
+            transition: height 0.05s linear, background-color 0.1s ease-out;
+            border-radius: 1px; /* Smaller rounded corners */
+        }
+
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        /* Horizontal scroll for new releases and artists */
+        .horizontal-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+        }
+        .horizontal-scroll::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome, Safari, Opera */
+        }
+
+        /* Mini-player styling */
+        .mini-player {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%; /* Default to full width on mobile */
+            height: 80px; /* Fixed height */
+            background-color: #212121;
+            border-top: 1px solid #333;
+            z-index: 50;
+            display: flex; /* Flex display for horizontal layout */
+            align-items: center;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Adjust mini-player width and position for desktop */
+        @media (min-width: 768px) {
+            .mini-player {
+                width: calc(100% - 250px); /* Adjust width for sidebar */
+                margin-left: 250px; /* Position next to sidebar */
+            }
+        }
+
+        /* Active navigation link styling - reverted to original blue text */
+        .nav-link.active {
+            background-color: #333;
+            color: #4299e1; /* Blue highlight */
+            border-radius: 0.5rem;
+            /* Removed gradient styles for active link text */
+            background-image: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+        }
+
+        /* Specific style for the Liked Songs link to always have the gradient */
+        .liked-songs-gradient {
+            background-image: linear-gradient(to right, #a855f7, #d946ef); /* Purple to fuchsia gradient */
+            -webkit-background-clip: text; /* For Safari/Chrome */
+            background-clip: text;
+            color: transparent; /* Make text transparent so gradient shows through */
+        }
+
+        /* Ensure the icon for liked songs also gets the gradient */
+        .liked-songs-gradient i {
+            background-image: linear-gradient(to right, #a855f7, #d946ef);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+
+        /* Hamburger menu for mobile */
+        .hamburger-menu {
+            display: none; /* Hidden by default on desktop */
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: #e0e0e0;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 60; /* Above everything */
+        }
+        @media (max-width: 767px) {
+            .hamburger-menu {
+                display: block; /* Show on mobile */
+            }
+        }
+
+        /* Keyframe animation for the pop effect */
+        @keyframes pop-animation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Class to apply the pop animation */
+        .animate-pop {
+            animation: pop-animation 0.3s ease-out;
+        }
+
+        /* New class for the liked state color */
+        .text-fuchsia-400 {
+            color: #e879f9; /* Tailwind's fuchsia-400 color */
+        }
