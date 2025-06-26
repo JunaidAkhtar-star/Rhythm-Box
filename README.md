@@ -48,6 +48,6 @@
 To run Rhythm Box locally:
 
 ```bash
-
+git https://github.com/JunaidAkhtar-star/Rhythm-Box.git
 cd rhythm-box
 open index.html
