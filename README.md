@@ -10,7 +10,9 @@
   - Add custom playlist names and descriptions.
   - Organize your favorite songs in personalized collections.
 
-![image alt](https://github.com/JunaidAkhtar-star/Rhythm-Box/blob/5b945ea760ef36316b94942862d1b506e0aa3061/Screenshot%20(69).png) ![image alt](https://github.com/JunaidAkhtar-star/Rhythm-Box/blob/b30fab5aa19f656a6dffede3d3a26712f9c8c35f/Screenshot%20(68).png)
+![image alt](https://github.com/JunaidAkhtar-star/Rhythm-Box/blob/5b945ea760ef36316b94942862d1b506e0aa3061/Screenshot%20(69).png)
+Add Songs After Create Playlist
+![image alt](https://github.com/JunaidAkhtar-star/Rhythm-Box/blob/b30fab5aa19f656a6dffede3d3a26712f9c8c35f/Screenshot%20(68).png)
 - ⏯ *Full Music Playback Control*
   - Play, pause, and skip tracks easily.
   - Smooth transitions and intuitive controls.
