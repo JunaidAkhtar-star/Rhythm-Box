@@ -27,6 +27,7 @@
   - Dynamic visualizations that sync with the rhythm of the music.
   - Enhances the listening experience with animated effects.
 
+![image alt](https://github.com/JunaidAkhtar-star/Rhythm-Box/blob/758db32958693a81ac62ad1d40ccbc4ea143206a/Screenshot%20(73).png)
 ---
 
 ## 🛠 Tech Stack
