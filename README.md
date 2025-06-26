@@ -40,7 +40,7 @@
 ## 📸 Screenshots
 
 ![image alt](https://github.com/JunaidAkhtar-star/Rhythm-Box/blob/c67da2eaec9377d55e6bb344fb3bfbfc8bdbf6b5/Screenshot%20(70).png)
-
+![image alt](https://github.com/JunaidAkhtar-star/Rhythm-Box/blob/c51d618b7005073539783f20af7cbd0e0846c5ad/Screenshot%20(72).png)
 ---
 
 ## 🔧 Installation
