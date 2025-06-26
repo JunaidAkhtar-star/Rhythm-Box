@@ -47,6 +47,6 @@ Add screenshots or GIFs of your website UI here (e.g. home screen, playlist crea
 To run Rhythm Box locally:
 
 ```bash
-git clone https://github.com/yourusername/rhythm-box.git
+
 cd rhythm-box
 open index.html
