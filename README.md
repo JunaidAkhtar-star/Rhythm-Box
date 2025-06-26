@@ -10,6 +10,7 @@
   - Add custom playlist names and descriptions.
   - Organize your favorite songs in personalized collections.
 
+![image alt](https://github.com/JunaidAkhtar-star/Rhythm-Box/blob/5b945ea760ef36316b94942862d1b506e0aa3061/Screenshot%20(69).png)
 - ⏯ *Full Music Playback Control*
   - Play, pause, and skip tracks easily.
   - Smooth transitions and intuitive controls.
