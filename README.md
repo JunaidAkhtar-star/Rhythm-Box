@@ -39,7 +39,7 @@
 
 ## 📸 Screenshots
 
-Add screenshots or GIFs of your website UI here (e.g. home screen, playlist creation, player controls).
+![image alt](https://github.com/JunaidAkhtar-star/Rhythm-Box/blob/c67da2eaec9377d55e6bb344fb3bfbfc8bdbf6b5/Screenshot%20(70).png)
 
 ---
 
